@@ -1,0 +1,16 @@
+# Segreti e API Keys
+.env
+
+# Database vettoriale (troppo pesante e locale)
+v_*/
+chroma/
+
+# Cronologia chat e file temporanei
+chat_history.json
+*.pdf
+tmp*
+
+# Python e Ambiente Virtuale
+.venv/
+__pycache__/
+*.pyc
