@@ -1,30 +1,31 @@
-# 📚 Multi-Doc Insight AI: Hybrid RAG System
+# 📚 Multi-Doc AI: Resilience RAG System
 
-Un'applicazione avanzata di **Retrieval-Augmented Generation (RAG)** che permette di interrogare più documenti PDF contemporaneamente. Il sistema utilizza un'architettura ibrida per bilanciare privacy, prestazioni locali e potenza di calcolo in cloud.
+A sophisticated **Retrieval-Augmented Generation (RAG)** application designed to query multiple PDF documents simultaneously. This system features a hybrid architecture to balance privacy, performance, and cloud-computing costs.
 
-## 🚀 Caratteristiche Principali
-- **Architettura Ibrida:** Embeddings generati localmente via **Ollama** (`all-minilm`) e ragionamento affidato a **Google Gemini 2.5** (Pro/Flash) tramite API.
-- **Multi-Document Ingestion:** Caricamento e analisi simultanea di più file PDF con tracking dei metadati (nome file e pagina).
-- **Resource Optimization:** Algoritmo di chunking ottimizzato per hardware con risorse limitate (testato su i3, 8GB RAM).
-- **Persistenza dei Dati:** Salvataggio automatico della cronologia chat in formato JSON per sessioni di lavoro continue.
-- **Export Professionale:** Generazione di report della conversazione in formato PDF.
-- **UI/UX Avanzata:** Barra di avanzamento dinamica durante l'indicizzazione e gestione dei limiti di quota (Rate Limiting).
+## 🚀 Key Features
+- **Hybrid Architecture:** Local embeddings via **Ollama** (`all-minilm`) and high-level reasoning via **Google Gemini 2.5** (Pro/Flash).
+- **Multi-Document Ingestion:** Simultaneous upload and analysis of multiple PDFs with precise metadata tracking (file name and page number).
+- **Resilience Logic (Auto-Scaling):** Automatically falls back to local models (Ollama/Llama 3.2) if cloud API quotas are exhausted (Error 429).
+- **Resource Optimized:** Aggressive text chunking and filtering designed for consumer-grade hardware (tested on Intel i3, 8GB RAM).
+- **Session Persistence:** Auto-saves chat history to JSON for continuous workflows.
+- **Professional Export:** Generates downloadable PDF reports of the conversation.
 
-## 🛠️ Stack Tecnologico
+## 🛠️ Tech Stack
 - **Frontend:** Streamlit
-- **Orchestrazione AI:** LangChain
+- **AI Orchestration:** LangChain
 - **Vector Database:** ChromaDB
-- **Embedding Locale:** Ollama
-- **LLM:** Google Generative AI (Gemini)
+- **Local Embedding:** Ollama
+- **LLM API:** Google Generative AI (Gemini)
 - **Document Processing:** PyPDF & RecursiveCharacterTextSplitter
 
-## 📋 Installazione
-1. Clonare il repository.
-2. Installare le dipendenze: `pip install -r requirements.txt`
-3. Configurare il file `.env` con la propria `GOOGLE_API_KEY`.
-4. Assicurarsi che Ollama sia installato e in esecuzione localmente.
+## 📋 Installation
+1. Clone the repository.
+2. Install dependencies: `pip install -r requirements.txt`
+3. Configure your `.env` file with your `GOOGLE_API_KEY`.
+4. Ensure **Ollama** is installed and running locally.
+5. Pull the local fallback model: `ollama pull llama3.2:1b`
 
-## 🧠 Sfide Tecniche Risolte
-- Gestione dei crash di memoria tramite filtri di sicurezza sui chunk di testo.
-- Implementazione di logiche di fallback manuale per la gestione delle quote API gratuite.
-- Ottimizzazione del contesto per minimizzare la latenza su processori dual-core.
+## 🧠 Technical Challenges Solved
+- **API Rate Limiting:** Implemented a cascading fallback mechanism to ensure 100% uptime.
+- **Memory Management:** Optimized chunk sizes to prevent 500 errors on low-RAM systems.
+- **Data Privacy:** Localized vector indexing to keep document structure off-cloud.
