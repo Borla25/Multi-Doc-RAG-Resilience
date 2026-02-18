@@ -1,16 +1,14 @@
-# Segreti e API Keys
+# Ambienti virtuali
+venv/
+.venv/
+env/
+
+# Variabili d'ambiente (NON CARICARE MAI QUESTO)
 .env
 
-# Database vettoriale (troppo pesante e locale)
-v_*/
-chroma/
-
-# Cronologia chat e file temporanei
-chat_history.json
-*.pdf
-tmp*
-
-# Python e Ambiente Virtuale
-.venv/
+# Cache di Python
 __pycache__/
-*.pyc
+*.py[cod]
+
+# Database vettoriale locale (non si carica, è pesante e si ricrea)
+chroma_db/

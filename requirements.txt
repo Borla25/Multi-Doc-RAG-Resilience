@@ -1,8 +1,9 @@
 streamlit
 langchain
 langchain-community
-langchain-chroma
 langchain-google-genai
-python-dotenv
+langchain-chroma
+chromadb
 pypdf
-fpdf2
+python-dotenv
+tiktoken
