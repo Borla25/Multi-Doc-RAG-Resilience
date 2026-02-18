@@ -1,8 +1,10 @@
-🛡️ Multi-Doc AI: Resilience RAG System
+# 🛡️ Multi-Doc AI: Resilience RAG System
 
-A production-ready Retrieval-Augmented Generation (RAG) application designed to query multiple PDF documents simultaneously. This system features a hybrid architecture to balance privacy, performance, and cloud-computing costs, engineered with strict type hinting and fail-safe mechanisms.
+A production-ready **Retrieval-Augmented Generation (RAG)** application designed to query multiple PDF documents simultaneously. This system features a hybrid architecture to balance privacy, performance, and cloud-computing costs, engineered with **strict type hinting** and **fail-safe mechanisms**.
 
-🏗️ Architecture Flow
+## 🏗️ Architecture Flow
+
+```mermaid
 graph TD
     User[User] -->|Uploads PDF| UI[Streamlit UI]
     UI -->|Extract Text| PDF[PyPDF Loader]
@@ -19,9 +21,7 @@ graph TD
     
     Cloud -->|Response| UI
     Fallback -->|Response| UI
-
 🚀 Key Features
-
 Hybrid Intelligence
 Orchestrates local embeddings via Ollama (all-minilm) and cloud reasoning via Google Gemini 2.5.
 
@@ -38,7 +38,6 @@ Session Persistence
 Auto-saves chat history to JSON and supports PDF report export.
 
 🛠️ Tech Stack
-
 Frontend: Streamlit
 
 AI Orchestration: LangChain
@@ -53,30 +52,27 @@ Quality Assurance: Type Hinting (typing), Error Handling
 
 📋 Installation
 1. Clone the repository
-git clone https://github.com/Borla25/Multi-Doc-RAG-Resilience.git
+Bash
+git clone [https://github.com/Borla25/Multi-Doc-RAG-Resilience.git](https://github.com/Borla25/Multi-Doc-RAG-Resilience.git)
 cd Multi-Doc-RAG-Resilience
-
 2. Install dependencies
+Bash
 pip install -r requirements.txt
-
 3. Setup Environment
-
 Create a .env file in the root directory and add your API key:
 
+Plaintext
 GOOGLE_API_KEY=your_api_key_here
-
 4. Prepare Local Models (Ollama)
-
 Ensure Ollama is installed and running, then pull the required models:
 
+Bash
 ollama pull all-minilm    # For Embeddings
 ollama pull llama3.2:1b   # For Local Fallback
-
 5. Run the Application
+Bash
 streamlit run app.py
-
 🧠 Technical Challenges Solved
-
 API Rate Limiting
 Implemented a hierarchy of models to ensure 100% service uptime.
 
